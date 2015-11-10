@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         String git;
         String git2;
+        String git3;
 
         File json1 = new File("/res/values/skiGolf.json");
 
