@@ -11,13 +11,21 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView m_ListView;
     private ArrayAdapter<String> m_Adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +43,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String git;
-        String git2;
-        String git3;
-
-        File json1 = new File("/res/values/skiGolf.json");
-
+        //파일이름으로 제이슨 객체 받기
+        JSONObject jobj = loadJSONFromAsset("skiGolf.json");
 
         // Android에서 제공하는 string 문자열 하나를 출력 가능한 layout으로 어댑터 생성
         m_Adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
@@ -85,4 +89,32 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public JSONObject loadJSONFromAsset(String fileName){
+        String json = null;
+
+        try{
+            InputStream is = getAssets().open(fileName);
+
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+
+        }catch(IOException ex){
+            ex.printStackTrace();
+            return null;
+        }
+
+        try {
+            JSONObject jsonObj = new JSONObject(json);
+            return jsonObj;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
