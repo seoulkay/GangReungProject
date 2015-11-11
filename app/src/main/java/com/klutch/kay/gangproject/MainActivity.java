@@ -8,14 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         m_ListView.setAdapter(m_Adapter);
 
         // ListView 아이템 터치 시 이벤트 추가
-        //m_ListView.setOnItemClickListener(onClickListItem);
+        m_ListView.setOnItemClickListener(onClickListItem);
 
         // ListView에 아이템 추가
         m_Adapter.add("하스스톤");
@@ -67,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
         m_Adapter.add("안드로이드");
         m_Adapter.add("아이폰");
     }
+    // 아이템 터치 이벤트
+    private AdapterView.OnItemClickListener onClickListItem = new AdapterView.OnItemClickListener() {
+
+        @Override
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            // 이벤트 발생 시 해당 아이템 위치의 텍스트를 출력
+            Toast.makeText(getApplicationContext(), m_Adapter.getItem(arg2), Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
