@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -66,6 +67,14 @@ public class MainActivity extends AppCompatActivity {
         m_Adapter.add("리니지");
         m_Adapter.add("안드로이드");
         m_Adapter.add("아이폰");
+
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "버튼을 눌렀습니다", Toast.LENGTH_LONG).show();
+            }
+        });
     }
     // 아이템 터치 이벤트
     private AdapterView.OnItemClickListener onClickListItem = new AdapterView.OnItemClickListener() {
@@ -77,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public void ClickButton(View v){
+        Toast.makeText(getApplicationContext(),"버튼을 눌렀습니다.", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

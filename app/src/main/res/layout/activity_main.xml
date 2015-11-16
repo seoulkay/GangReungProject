@@ -14,7 +14,13 @@
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BUTTON"
+        android:onClick="ClickButton"
+        />
     <include layout="@layout/listview" />
 
     <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
