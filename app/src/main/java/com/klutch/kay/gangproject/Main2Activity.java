@@ -38,7 +38,7 @@ public class Main2Activity extends AppCompatActivity {
     private ListView m_ListView;
     private ArrayAdapter<String> m_Adapter;
 
-////
+//
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
