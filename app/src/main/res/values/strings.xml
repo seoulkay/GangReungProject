@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">GangProject</string>
+    <string name="app_name">Hello Gangwon</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_list_page">ListPageActivity</string>
+    <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_maps">Map</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
