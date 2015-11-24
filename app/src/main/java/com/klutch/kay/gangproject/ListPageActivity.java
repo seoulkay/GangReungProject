@@ -48,6 +48,8 @@ public class ListPageActivity extends AppCompatActivity {
         myplace = new MyPlace(R.mipmap.ic_launcher, "초당두부마을");
         arPlace.add(myplace);
 
+
+
         MyPlaceAdapter adapter = new MyPlaceAdapter(this, R.layout.list_item, arPlace);
 
         ListView list;
