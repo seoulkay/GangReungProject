@@ -1,3 +1,3 @@
-# Hello GangNeung!!
+# Hello Gangneung!!
 
 고기 사먹겠지...
