@@ -29,27 +29,50 @@ import java.util.ArrayList;
 
 public class ListPageActivity extends AppCompatActivity {
 
-    ArrayList<MyPlace> arPlace;
+    //ArrayList<MyPlace> arPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_page);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Grace: 액티비티에 지역별로 인자 잘 넘어오나 확인하기위해 임시로 둔 텍스트 뷰
+        TextView locationName = (TextView) findViewById(R.id.txt_location);
+        //Grace: 인텐트로 인자 전달 받음 (인자는 도시 이름)
+        Intent intent = getIntent();
+        String location = intent.getStringExtra("selectedItemId");
+        switch (location) {
+            case "GANG NEUNG":
+                locationName.setText("GANG NEUNG");
+                break;
+            case "JU MUN JIN":
+                locationName.setText("JU MUN JIN");
+                break;
+            case "SA CHEON":
+                locationName.setText("SA CHEON");
+                break;
+            case "YEON GOK":
+                locationName.setText("YEON GOK");
+                break;
+            case "SEONG SAN":
+                locationName.setText("SEONG SAN");
+                break;
+            case "WANG SAN":
+                locationName.setText("WANG SAN");
+                break;
+            case "OK GYE":
+                locationName.setText("OK GYE");
+                break;
+            case "GANG DONG":
+                locationName.setText("GANG DONG");
+                break;
+            case "GU JEONG":
+                locationName.setText("GU JEONG");
+                break;
+        }
+    }
+}
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
-
-
-        String skiGolfStr = "";
+       /* String skiGolfStr = "";
 
             try {
                 InputStream is = getAssets().open("skiGolf.json");
@@ -233,5 +256,4 @@ class MyPlaceAdapter extends BaseAdapter {
     }
 
 
-}
-
+}*/

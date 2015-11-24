@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="location">
+        <item>GANG NEUNG</item>
+        <item>JU MUN JIN</item>
+        <item>SA CHEON</item>
+        <item>YEON GOK</item>
+        <item>SEONG SAN</item>
+        <item>WANG SAN</item>
+        <item>OK GYE</item>
+        <item>GANG DONG</item>
+        <item>GU JEONG</item>
+    </string-array>
+</resources>
