@@ -1,17 +1,16 @@
 package com.klutch.kay.gangproject;
 
 import android.content.Context;
-import android.content.res.AssetManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,15 +21,11 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ListPageActivity extends AppCompatActivity {
 
@@ -43,14 +38,17 @@ public class ListPageActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
+
+
+
         String skiGolfStr = "";
 
             try {
@@ -82,6 +80,16 @@ public class ListPageActivity extends AppCompatActivity {
         ListView list;
         list = (ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
+
+        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        };
+
+        list.setOnItemClickListener(listener);
+
     }
 
     public String readFile(InputStream name){
@@ -207,14 +215,18 @@ class MyPlaceAdapter extends BaseAdapter {
         ImageView img = (ImageView) convertView.findViewById(R.id.img);
         img.setImageResource(arP.get(position).Icon);
 
+
         TextView txt = (TextView) convertView.findViewById(R.id.txt);
         txt.setText(arP.get(position).Name);
+
 
         Button btn = (Button) convertView.findViewById(R.id.btn);
         btn.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
                 String str = arP.get(position).Name + "버튼";
                 Toast.makeText(con, str, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(con, MapsActivity.class);
+                con.startActivity(intent);
             }
         });
         return convertView;
