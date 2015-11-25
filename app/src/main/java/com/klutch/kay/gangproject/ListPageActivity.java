@@ -69,7 +69,7 @@ public class ListPageActivity extends AppCompatActivity {
 
 
             for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
-                myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
+                myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT());
                 arPlace.add(myplace);
             }
 
@@ -171,12 +171,10 @@ public class ListPageActivity extends AppCompatActivity {
 class MyPlace {
     int Icon;
     String Name;
-    skiGolf skiGolf;
 
-    MyPlace(int aIcon, String aName, skiGolf askiGolf) {
+    MyPlace(int aIcon, String aName) {
         Icon = aIcon;
         Name = aName;
-        skiGolf = askiGolf;
     }
 }
 
@@ -228,9 +226,6 @@ class MyPlaceAdapter extends BaseAdapter {
                 String str = arP.get(position).Name + "버튼";
                 Toast.makeText(con, str, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(con, MapsActivity.class);
-                intent.putExtra("NEW address", arP.get(position).skiGolf.getNEW_ADDR());
-                intent.putExtra("detail_content", arP.get(position).skiGolf.getTOUR_INFM());
-                System.out.println("%%%$%%$%$%$%$%"+arP.get(position).skiGolf.getTOUR_INFM());
                 con.startActivity(intent);
             }
         });

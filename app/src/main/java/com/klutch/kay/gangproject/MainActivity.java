@@ -10,31 +10,30 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.rajasharan.widget.SearchableSpinner;
+
+public class MainActivity extends AppCompatActivity implements SearchableSpinner.OnSelectionChangeListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+        //Grace: 스피너 구현
+        SearchableSpinner spinner1 = (SearchableSpinner) findViewById(R.id.main_spinner);
+        spinner1.setOnSelectionChangeListener(this);
     }
 
-    /** Called when the user clicks the Send button */
-    public void ListPage(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, ListPageActivity.class);
+    //Grace: 스피너에서 도시 선택하면 도시 이름을 인자로 ListPageActivity에 넘김
+    public void onSelectionChanged(String selection){
+        Toast.makeText(this, selection + " selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), ListPageActivity.class);
+        intent.putExtra("selectedItemId", selection);
         startActivity(intent);
+        //Grace: 액티비티 전환 애니메이션 효과
+        overridePendingTransition(R.anim.fade, R.anim.cycle_7);
     }
 
     @Override

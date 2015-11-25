@@ -1,3 +1,3 @@
-# GangReungProject
+# Hello Gangneung!!
 
-This is a competition!
+고기 사먹겠지...
