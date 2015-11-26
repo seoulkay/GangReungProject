@@ -6,6 +6,7 @@ package com.klutch.kay.gangproject;
 public class NatureItem {
     private String mName;
     private String mDes;
+    private String mKor;
     private int mThumbnail;
 
     public String getName() {
@@ -22,6 +23,14 @@ public class NatureItem {
 
     public void setDes(String des) {
         this.mDes = des;
+    }
+
+    public String getKor() {
+        return mKor;
+    }
+
+    public void setKor(String kor) {
+        this.mKor = kor;
     }
 
     public int getThumbnail() {
