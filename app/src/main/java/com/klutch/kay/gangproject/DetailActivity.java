@@ -51,7 +51,6 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         mapFragment.getMapAsync(this);
 
         Intent intent = getIntent();
-        String addr = intent.getStringExtra("NEW address");
 
         //Toast.makeText(getApplicationContext(), addr, Toast.LENGTH_SHORT).show();
         TextView place = (TextView)findViewById(R.id.detail_place);
@@ -60,7 +59,6 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         textView.setText(intent.getStringExtra("detail_content"));
         TextView txt_website = (TextView)findViewById(R.id.txt_url);
         txt_website.setText(intent.getStringExtra("homepage"));
-        //전화번호가 없다니...
         TextView txt_number = (TextView)findViewById(R.id.txt_number);
         txt_number.setText(intent.getStringExtra("phone"));
         TextView attractions = (TextView)findViewById(R.id.attractions);
@@ -85,7 +83,7 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
             l.addView(iv);
         }
 
-    //Grace: 플로팅 액션 버튼
+        //Grace: 플로팅 액션 버튼
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,8 +112,6 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
 
         Intent intent = getIntent();
         String addr = intent.getStringExtra("NEW address");
-
-
 
         Double lat = 0d;
         Double lon = 0d;
@@ -149,7 +145,6 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
     }
 
     //Grace: 갤러리 이미지 클릭
-
     public void onClick(View v){
         if (v instanceof ImageView){
             if(lastClicked != null){

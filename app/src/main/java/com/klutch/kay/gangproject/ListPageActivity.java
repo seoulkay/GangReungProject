@@ -47,7 +47,6 @@ public class ListPageActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         Gson skiGolf = new Gson();
         skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
         Gson museum = new Gson();
@@ -179,12 +178,9 @@ public class ListPageActivity extends AppCompatActivity {
         ListView list;
         list = (ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
-
     }
 
     public String readFile(InputStream name){
-
-
         // 버퍼 생성
         BufferedReader br = null;
 
@@ -197,7 +193,6 @@ public class ListPageActivity extends AppCompatActivity {
 
         // File 경로
         //File file = new File("temp/target.txt");
-
 
         // 버퍼로 읽어들일 임시 변수
         String temp = "";
@@ -219,9 +214,8 @@ public class ListPageActivity extends AppCompatActivity {
             while( (temp = br.readLine()) != null) {
                 content += temp + "\n";
             }
-
-            System.out.println("================== 파일 내용 출력 ==================");
-            System.out.println(content);
+            //System.out.println("================== 파일 내용 출력 ==================");
+            //System.out.println(content);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -248,7 +242,6 @@ public class ListPageActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
         return content;
     }
@@ -270,7 +263,6 @@ public class ListPageActivity extends AppCompatActivity {
                 }else{
                     myplace = new MyPlace(R.mipmap.ic_golf, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
                 }
-
                 result.add(myplace);
             }
         }
@@ -279,8 +271,6 @@ public class ListPageActivity extends AppCompatActivity {
     }
 
 }
-
-
 
 //리스트뷰에 출력할 항목 클래스
 class MyPlace {
@@ -368,14 +358,8 @@ class MyPlaceAdapter extends BaseAdapter {
                 con.startActivity(intent);
             }
         });
-
-
         return convertView;
-
     }
-
-
-
 
 }
 
