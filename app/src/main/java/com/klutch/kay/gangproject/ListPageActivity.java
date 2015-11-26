@@ -89,7 +89,7 @@ public class ListPageActivity extends AppCompatActivity {
                     }
                 }
                 break;
-            case "JU MUN JIN":
+            case "PYEONG CHANG":
                 locationName.setText("평창군");
                 for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
                     if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("평창군")) {
@@ -98,26 +98,50 @@ public class ListPageActivity extends AppCompatActivity {
                     }
                 }
                 break;
-            case "SA CHEON":
-                locationName.setText("SA CHEON");
+            case "GO SEONG":
+                locationName.setText("고성군");
                 break;
-            case "YEON GOK":
-                locationName.setText("YEON GOK");
+            case "DONG HAE":
+                locationName.setText("동해시");
                 break;
-            case "SEONG SAN":
-                locationName.setText("SEONG SAN");
+            case "SAM CHEOK":
+                locationName.setText("삼척시");
                 break;
-            case "WANG SAN":
-                locationName.setText("WANG SAN");
+            case "SOK CHO":
+                locationName.setText("속초시");
                 break;
-            case "OK GYE":
-                locationName.setText("OK GYE");
+            case "YANG GU":
+                locationName.setText("양구군");
                 break;
-            case "GANG DONG":
-                locationName.setText("GANG DONG");
+            case "YEONG WOL":
+                locationName.setText("영월군");
                 break;
-            case "GU JEONG":
-                locationName.setText("GU JEONG");
+            case "WON JU":
+                locationName.setText("원주시");
+                break;
+            case "IN JE":
+                locationName.setText("인제군");
+                break;
+            case "JEONG SEON":
+                locationName.setText("정선군");
+                break;
+            case "CHEOR WON":
+                locationName.setText("철원군");
+                break;
+            case "CHUN CHEON":
+                locationName.setText("춘천시");
+                break;
+            case "TAE BAEK":
+                locationName.setText("태백시");
+                break;
+            case "HONG CHEON":
+                locationName.setText("홍천군");
+                break;
+            case "HWA CHEON":
+                locationName.setText("화천군");
+                break;
+            case "HOENG SEONG":
+                locationName.setText("횡성군");
                 break;
         }
 
@@ -264,7 +288,8 @@ class MyPlaceAdapter extends BaseAdapter {
             public void onClick(View v){
                 String str = arP.get(position).Name + "버튼";
                 Toast.makeText(con, str, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(con, MapsActivity.class);
+                Intent intent = new Intent(con, DetailActivity.class);
+                intent.putExtra("Place", arP.get(position).skiGolf.getSUBJECT());
                 intent.putExtra("NEW address", arP.get(position).skiGolf.getNEW_ADDR());
                 intent.putExtra("detail_content", arP.get(position).skiGolf.getTOUR_INFM());
                 System.out.println("%%%$%%$%$%$%$%" + arP.get(position).skiGolf.getTOUR_INFM());
