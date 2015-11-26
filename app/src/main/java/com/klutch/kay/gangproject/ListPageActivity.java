@@ -67,14 +67,6 @@ public class ListPageActivity extends AppCompatActivity {
         //Grace: 액티비티에 지역별로 인자 잘 넘어오나 확인하기위해 임시로 둔 텍스트 뷰
         TextView locationName = (TextView) findViewById(R.id.txt_location);
 
-        /*AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        };
-
-        list.setOnItemClickListener(listener);*/
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("selectedItemId");
