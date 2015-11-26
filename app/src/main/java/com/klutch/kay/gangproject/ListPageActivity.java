@@ -29,23 +29,74 @@ import java.util.ArrayList;
 
 public class ListPageActivity extends AppCompatActivity {
 
-    //ArrayList<MyPlace> arPlace;
-
+    ArrayList<MyPlace> arPlace;
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_page);
+
         //Grace: 액티비티에 지역별로 인자 잘 넘어오나 확인하기위해 임시로 둔 텍스트 뷰
         TextView locationName = (TextView) findViewById(R.id.txt_location);
-        //Grace: 인텐트로 인자 전달 받음 (인자는 도시 이름)
+
+        String skiGolfStr = "";
+
+            try {
+                InputStream is = getAssets().open("skiGolf.json");
+                skiGolfStr = readFile(is);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+
+            Gson skiGolf = new Gson();
+            skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
+
+
+
+            arPlace = new ArrayList<MyPlace>();
+            MyPlace myplace;
+
+
+//            for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
+//                myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT());
+//                arPlace.add(myplace);
+//            }
+
+
+
+
+
+
+        /*AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        };
+
+        list.setOnItemClickListener(listener);*/
+
         Intent intent = getIntent();
         String location = intent.getStringExtra("selectedItemId");
         switch (location) {
             case "GANG NEUNG":
-                locationName.setText("GANG NEUNG");
+                locationName.setText("속초시");
+                for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
+                    if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("속초시")) {
+                        myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
+                        arPlace.add(myplace);
+                    }
+                }
                 break;
             case "JU MUN JIN":
-                locationName.setText("JU MUN JIN");
+                locationName.setText("평창군");
+                for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
+                    if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("평창군")) {
+                        myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
+                        arPlace.add(myplace);
+                    }
+                }
                 break;
             case "SA CHEON":
                 locationName.setText("SA CHEON");
@@ -69,49 +120,12 @@ public class ListPageActivity extends AppCompatActivity {
                 locationName.setText("GU JEONG");
                 break;
         }
-    }
-}
-
-       /* String skiGolfStr = "";
-
-            try {
-                InputStream is = getAssets().open("skiGolf.json");
-                skiGolfStr = readFile(is);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-
-
-            Gson skiGolf = new Gson();
-            skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
-
-
-
-            arPlace = new ArrayList<MyPlace>();
-            MyPlace myplace;
-
-
-            for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
-                myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT());
-                arPlace.add(myplace);
-            }
-
-
 
         MyPlaceAdapter adapter = new MyPlaceAdapter(this, R.layout.list_item, arPlace);
 
         ListView list;
         list = (ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
-
-        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        };
-
-        list.setOnItemClickListener(listener);
 
     }
 
@@ -194,10 +208,12 @@ public class ListPageActivity extends AppCompatActivity {
 class MyPlace {
     int Icon;
     String Name;
+    skiGolf skiGolf;
 
-    MyPlace(int aIcon, String aName) {
+    MyPlace(int aIcon, String aName, skiGolf askiGolf) {
         Icon = aIcon;
         Name = aName;
+        skiGolf = askiGolf;
     }
 }
 
@@ -249,6 +265,9 @@ class MyPlaceAdapter extends BaseAdapter {
                 String str = arP.get(position).Name + "버튼";
                 Toast.makeText(con, str, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(con, MapsActivity.class);
+                intent.putExtra("NEW address", arP.get(position).skiGolf.getNEW_ADDR());
+                intent.putExtra("detail_content", arP.get(position).skiGolf.getTOUR_INFM());
+                System.out.println("%%%$%%$%$%$%$%" + arP.get(position).skiGolf.getTOUR_INFM());
                 con.startActivity(intent);
             }
         });
@@ -256,4 +275,5 @@ class MyPlaceAdapter extends BaseAdapter {
     }
 
 
-}*/
+}
+
