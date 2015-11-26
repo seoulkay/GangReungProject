@@ -34,10 +34,15 @@ public class ListPageActivity extends AppCompatActivity {
 
 
         String skiGolfStr = "";
-
+        String museumStr = "";
+        String templeStr = "";
         try {
             InputStream is = getAssets().open("skiENG.json");
             skiGolfStr = readFile(is);
+            InputStream is2 = getAssets().open("museum.json");
+            museumStr = readFile(is2);
+            InputStream is3 = getAssets().open("temple.json");
+            templeStr = readFile(is3);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -45,6 +50,10 @@ public class ListPageActivity extends AppCompatActivity {
 
         Gson skiGolf = new Gson();
         skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
+        Gson museum = new Gson();
+        skiGolfList museumVo = museum.fromJson(museumStr, skiGolfList.class);
+        Gson temple = new Gson();
+        skiGolfList templeVo = temple.fromJson(templeStr, skiGolfList.class);
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("selectedItemId");
@@ -52,78 +61,116 @@ public class ListPageActivity extends AppCompatActivity {
             case "Journey":
                 //locationName.setText("Journey!");
                 arPlace = getSkiGOlfVo("Journey!", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("Journey!", museumVo));
+                arPlace.addAll(getSkiGOlfVo("Journey!", templeVo));
                 break;
             case "GANG NEUNG":
                 //locationName.setText("강릉시");
                 arPlace = getSkiGOlfVo("강릉시", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("강릉시", museumVo));
+                arPlace.addAll(getSkiGOlfVo("강릉시", templeVo));
                 break;
             case "PYEONG CHANG":
                 //locationName.setText("평창군");
                 arPlace = getSkiGOlfVo("평창군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("평창군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("평창군", templeVo));
                 break;
             case "GO SEONG":
                 //locationName.setText("고성군");
                 arPlace = getSkiGOlfVo("고성군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("고성군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("고성군", templeVo));
                 break;
             case "DONG HAE":
                 //locationName.setText("동해시");
                 arPlace = getSkiGOlfVo("동해시", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("동해시", museumVo));
+                arPlace.addAll(getSkiGOlfVo("동해시", templeVo));
                 break;
             case "SAM CHEOK":
                 //locationName.setText("삼척시");
                 arPlace = getSkiGOlfVo("삼척시", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("삼척시", museumVo));
+                arPlace.addAll(getSkiGOlfVo("삼척시", templeVo));
                 break;
             case "SOK CHO":
                 //locationName.setText("속초시");
                 arPlace = getSkiGOlfVo("속초시", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("속초시", museumVo));
+                arPlace.addAll(getSkiGOlfVo("속초시", templeVo));
                 break;
             case "YANG GU":
                 //locationName.setText("양구군");
                 arPlace = getSkiGOlfVo("양구군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("양구군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("양구군", templeVo));
                 break;
             case "YANG YANG":
                 //locationName.setText("양양군");
                 arPlace = getSkiGOlfVo("양양군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("양양군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("양양군", templeVo));
                 break;
             case "YEONG WOL":
                 //locationName.setText("영월군");
                 arPlace = getSkiGOlfVo("영월군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("영월군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("영월군", templeVo));
                 break;
             case "WON JU":
                 //locationName.setText("원주시");
                 arPlace = getSkiGOlfVo("원주시", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("원주시", museumVo));
+                arPlace.addAll(getSkiGOlfVo("원주시", templeVo));
                 break;
             case "IN JE":
                 //locationName.setText("인제군");
                 arPlace = getSkiGOlfVo("인제군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("인제군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("인제군", templeVo));
                 break;
             case "JEONG SEON":
                 //locationName.setText("정선군");
                 arPlace = getSkiGOlfVo("정선군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("정선군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("정선군", templeVo));
                 break;
             case "CHEOR WON":
                 //locationName.setText("철원군");
                 arPlace = getSkiGOlfVo("철원군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("철원군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("철원군", templeVo));
                 break;
             case "CHUN CHEON":
                 //locationName.setText("춘천시");
                 arPlace = getSkiGOlfVo("춘천시", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("춘천시", museumVo));
+                arPlace.addAll(getSkiGOlfVo("춘천시", templeVo));
                 break;
             case "TAE BAEK":
                 //locationName.setText("태백시");
                 arPlace = getSkiGOlfVo("태백시", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("태백시", museumVo));
+                arPlace.addAll(getSkiGOlfVo("태백시", templeVo));
                 break;
             case "HONG CHEON":
                 //locationName.setText("홍천군");
                 arPlace = getSkiGOlfVo("홍천군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("홍천군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("홍천군", templeVo));
                 break;
             case "HWA CHEON":
                 //locationName.setText("화천군");
                 arPlace = getSkiGOlfVo("화천군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("화천군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("화천군", templeVo));
                 break;
             case "HOENG SEONG":
                 //locationName.setText("횡성군");
                 arPlace = getSkiGOlfVo("횡성군", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("횡성군", museumVo));
+                arPlace.addAll(getSkiGOlfVo("횡성군", templeVo));
                 break;
         }
 
@@ -214,7 +261,16 @@ public class ListPageActivity extends AppCompatActivity {
             skiGolf vo = skiGolfVo.getDATA().get(i);
             if(vo.getGOV_NM().equals(city)) {
                 //장르에 따라 바뀌는 아이콘 필요
-                myplace = new MyPlace(R.mipmap.ic_snow, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                if(vo.getCTGRY_NM().equals("05.박물관/기념관/미술관")) {
+                    myplace = new MyPlace(R.mipmap.ic_hotel, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                }else if(vo.getCTGRY_NM().equals("03.사찰/불상/탑/동종")){
+                    myplace = new MyPlace(R.mipmap.ic_golf, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                }else if(vo.getCTGRY_NM().equals("01.스키/골프/리조트")){
+                    myplace = new MyPlace(R.mipmap.ic_snow, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                }else{
+                    myplace = new MyPlace(R.mipmap.ic_golf, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                }
+
                 result.add(myplace);
             }
         }

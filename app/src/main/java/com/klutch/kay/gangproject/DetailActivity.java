@@ -61,8 +61,8 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         TextView txt_website = (TextView)findViewById(R.id.txt_url);
         txt_website.setText(intent.getStringExtra("homepage"));
         //전화번호가 없다니...
-        /*TextView txt_number = (TextView)findViewById(R.id.txt_number);
-        txt_number.setText(intent.getStringExtra("phone"));*/
+        TextView txt_number = (TextView)findViewById(R.id.txt_number);
+        txt_number.setText(intent.getStringExtra("phone"));
         TextView attractions = (TextView)findViewById(R.id.attractions);
         attractions.setText(intent.getStringExtra("attractions"));
 
@@ -124,8 +124,15 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
             List<Address> result = geocoder.getFromLocationName(addr, 1);
             lat = result.get(0).getLatitude();
             lon = result.get(0).getLongitude();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+           try {
+               List<Address> result = geocoder.getFromLocationName("강원도", 1);
+               lat = result.get(0).getLatitude();
+               lon = result.get(0).getLongitude();
+           }catch(IOException e1){
+               e.printStackTrace();
+           }
         }
 
         LatLng MV =new LatLng(37.4, -122.1);
