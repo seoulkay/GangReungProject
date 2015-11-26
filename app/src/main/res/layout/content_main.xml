@@ -24,7 +24,5 @@
         android:layout_toRightOf="@+id/spinner_label"
         android:padding="5dp"
         app:list="@array/location">
-
     </com.rajasharan.widget.SearchableSpinner>
-
 </RelativeLayout>
