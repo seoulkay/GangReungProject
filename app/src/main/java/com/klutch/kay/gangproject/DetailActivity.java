@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -66,6 +68,18 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
             iv.setOnClickListener(this);
             l.addView(iv);
         }
+        //Grace: 플로팅 액션 버튼
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), TipListPageActivity.class);
+                startActivity(intent);
+                //Grace: 액티비티 전환 애니메이션 효과
+                overridePendingTransition(R.anim.fade, R.anim.cycle_7);
+            }
+        });
+
     }
 
     /**

@@ -29,6 +29,7 @@
             android:layout_weight="1"
             android:text="경포대"
             android:textSize="20dp"
+            android:textColor="#444444"
             android:layout_alignParentTop="true"/>
 
         <RatingBar
@@ -37,6 +38,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:isIndicator="true"
+            android:rating="3"
             style="?android:attr/ratingBarStyleSmall"/>
     </LinearLayout>
 

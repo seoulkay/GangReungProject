@@ -8,4 +8,6 @@
     <string name="button_send">Send</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="to">To</string>
+    <string name="title_activity_floating">floatingActivity</string>
+    <string name="title_activity_tip_list_page">TipListPageActivity</string>
 </resources>
