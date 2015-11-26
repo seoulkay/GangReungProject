@@ -1,23 +1,20 @@
 package com.klutch.kay.gangproject;
 
-import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
@@ -56,11 +53,18 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         Intent intent = getIntent();
         String addr = intent.getStringExtra("NEW address");
 
-        Toast.makeText(getApplicationContext(), addr, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), addr, Toast.LENGTH_SHORT).show();
         TextView place = (TextView)findViewById(R.id.detail_place);
         place.setText(intent.getStringExtra("Place"));
         TextView textView = (TextView)findViewById(R.id.detail_txtView);
         textView.setText(intent.getStringExtra("detail_content"));
+        TextView txt_website = (TextView)findViewById(R.id.txt_url);
+        txt_website.setText(intent.getStringExtra("homepage"));
+        //전화번호가 없다니...
+        /*TextView txt_number = (TextView)findViewById(R.id.txt_number);
+        txt_number.setText(intent.getStringExtra("phone"));*/
+        TextView attractions = (TextView)findViewById(R.id.attractions);
+        attractions.setText(intent.getStringExtra("attractions"));
 
 
         //Grace: 갤러리
@@ -81,8 +85,17 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
             l.addView(iv);
         }
 
-//        Picasso.with(this).load("").into(v);
-
+    //Grace: 플로팅 액션 버튼
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), TipListPageActivity.class);
+                startActivity(intent);
+                //Grace: 액티비티 전환 애니메이션 효과
+                overridePendingTransition(R.anim.fade, R.anim.cycle_7);
+            }
+        });
 
     }
 
@@ -102,10 +115,7 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         Intent intent = getIntent();
         String addr = intent.getStringExtra("NEW address");
 
-        /*Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + addr);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        */
+
 
         Double lat = 0d;
         Double lon = 0d;
@@ -123,7 +133,7 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         // Add a marker in Sydney and move the camera
         LatLng venue= new LatLng(lat, lon);
         mMap.addMarker(new MarkerOptions().position(venue).title("Marker in the attraction"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(venue, 18));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(venue, 10));
         //mMap.animateCamera(CameraUpdateFactory.zoomIn());
         //mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         //CameraPosition cameraPosition = new CameraPosition.Builder().target(MV).zoom(17).bearing(90).tilt(30).build();
@@ -134,8 +144,6 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
     //Grace: 갤러리 이미지 클릭
 
     public void onClick(View v){
-
-
         if (v instanceof ImageView){
             if(lastClicked != null){
                 lastClicked.setPadding(padding, padding, padding, padding);

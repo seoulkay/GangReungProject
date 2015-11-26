@@ -2,20 +2,15 @@ package com.klutch.kay.gangproject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,88 +46,84 @@ public class ListPageActivity extends AppCompatActivity {
         Gson skiGolf = new Gson();
         skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
 
-
-
-        arPlace = new ArrayList<MyPlace>();
-        MyPlace myplace;
-
-
-
-        for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
-            myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
-            arPlace.add(myplace);
-
-        }
-
-        //Grace: 액티비티에 지역별로 인자 잘 넘어오나 확인하기위해 임시로 둔 텍스트 뷰
-        TextView locationName = (TextView) findViewById(R.id.txt_location);
-
-
         Intent intent = getIntent();
         String location = intent.getStringExtra("selectedItemId");
         switch (location) {
+            case "Journey":
+                //locationName.setText("Journey!");
+                arPlace = getSkiGOlfVo("Journey!", skiGolfVo);
+                break;
             case "GANG NEUNG":
-                locationName.setText("강릉시");
-                /*for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
-                    if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("강릉시")) {
-                        myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
-                        arPlace.add(myplace);
-                    }
-                }*/
+                //locationName.setText("강릉시");
+                arPlace = getSkiGOlfVo("강릉시", skiGolfVo);
                 break;
             case "PYEONG CHANG":
-                locationName.setText("평창군");
-                /*for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
-                    if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("평창군")) {
-                        myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
-                        arPlace.add(myplace);
-                    }
-                }*/
+                //locationName.setText("평창군");
+                arPlace = getSkiGOlfVo("평창군", skiGolfVo);
                 break;
             case "GO SEONG":
-                locationName.setText("고성군");
+                //locationName.setText("고성군");
+                arPlace = getSkiGOlfVo("고성군", skiGolfVo);
                 break;
             case "DONG HAE":
-                locationName.setText("동해시");
+                //locationName.setText("동해시");
+                arPlace = getSkiGOlfVo("동해시", skiGolfVo);
                 break;
             case "SAM CHEOK":
-                locationName.setText("삼척시");
+                //locationName.setText("삼척시");
+                arPlace = getSkiGOlfVo("삼척시", skiGolfVo);
                 break;
             case "SOK CHO":
-                locationName.setText("속초시");
+                //locationName.setText("속초시");
+                arPlace = getSkiGOlfVo("속초시", skiGolfVo);
                 break;
             case "YANG GU":
-                locationName.setText("양구군");
+                //locationName.setText("양구군");
+                arPlace = getSkiGOlfVo("양구군", skiGolfVo);
+                break;
+            case "YANG YANG":
+                //locationName.setText("양양군");
+                arPlace = getSkiGOlfVo("양양군", skiGolfVo);
                 break;
             case "YEONG WOL":
-                locationName.setText("영월군");
+                //locationName.setText("영월군");
+                arPlace = getSkiGOlfVo("영월군", skiGolfVo);
                 break;
             case "WON JU":
-                locationName.setText("원주시");
+                //locationName.setText("원주시");
+                arPlace = getSkiGOlfVo("원주시", skiGolfVo);
                 break;
             case "IN JE":
-                locationName.setText("인제군");
+                //locationName.setText("인제군");
+                arPlace = getSkiGOlfVo("인제군", skiGolfVo);
                 break;
             case "JEONG SEON":
-                locationName.setText("정선군");
+                //locationName.setText("정선군");
+                arPlace = getSkiGOlfVo("정선군", skiGolfVo);
                 break;
             case "CHEOR WON":
-                locationName.setText("철원군");
+                //locationName.setText("철원군");
+                arPlace = getSkiGOlfVo("철원군", skiGolfVo);
                 break;
             case "CHUN CHEON":
-                locationName.setText("춘천시");
+                //locationName.setText("춘천시");
+                arPlace = getSkiGOlfVo("춘천시", skiGolfVo);
                 break;
             case "TAE BAEK":
-                locationName.setText("태백시");
+                //locationName.setText("태백시");
+                arPlace = getSkiGOlfVo("태백시", skiGolfVo);
                 break;
             case "HONG CHEON":
-                locationName.setText("홍천군");
+                //locationName.setText("홍천군");
+                arPlace = getSkiGOlfVo("홍천군", skiGolfVo);
                 break;
             case "HWA CHEON":
-                locationName.setText("화천군");
+                //locationName.setText("화천군");
+                arPlace = getSkiGOlfVo("화천군", skiGolfVo);
                 break;
             case "HOENG SEONG":
-                locationName.setText("횡성군");
+                //locationName.setText("횡성군");
+                arPlace = getSkiGOlfVo("횡성군", skiGolfVo);
                 break;
         }
 
@@ -215,6 +206,22 @@ public class ListPageActivity extends AppCompatActivity {
         return content;
     }
 
+    public ArrayList<MyPlace> getSkiGOlfVo(String city, skiGolfList skiGolfVo){
+        ArrayList<MyPlace> result = new ArrayList<>();
+        MyPlace myplace;
+
+        for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
+            skiGolf vo = skiGolfVo.getDATA().get(i);
+            if(vo.getGOV_NM().equals(city)) {
+                //장르에 따라 바뀌는 아이콘 필요
+                myplace = new MyPlace(R.mipmap.ic_snow, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                result.add(myplace);
+            }
+        }
+
+        return result;
+    }
+
 }
 
 
@@ -266,26 +273,36 @@ class MyPlaceAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent){
         if (convertView == null){
             convertView = inflater.inflate(layout, parent, false);
-            ImageView img = (ImageView) convertView.findViewById(R.id.img);
-            img.setImageResource(arP.get(position).Icon);
         }
-
+        ImageView img = (ImageView) convertView.findViewById(R.id.img);
+        img.setImageResource(arP.get(position).Icon);
 
 
         TextView txt = (TextView) convertView.findViewById(R.id.txt);
         txt.setText(arP.get(position).Name);
 
+        //rating
+        final RatingBar rate_bar = (RatingBar) convertView.findViewById(R.id.rating);
+        rate_bar.setStepSize((float) 0.5);
+        rate_bar.setMax(5);
+        //난수 레이트 ㅋ
+        float rate = (float)Math.random()*5;
+        if(rate < 3.0f) rate = 3.0f;
+        rate_bar.setRating(rate);
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = arP.get(position).Name + "버튼";
-                Toast.makeText(con, str, Toast.LENGTH_SHORT).show();
+                /*String str = arP.get(position).Name + "버튼";
+                Toast.makeText(con, str, Toast.LENGTH_SHORT).show();*/
                 Intent intent = new Intent(con, DetailActivity.class);
                 intent.putExtra("Place", arP.get(position).skiGolf.getSUBJECT());
                 intent.putExtra("NEW address", arP.get(position).skiGolf.getNEW_ADDR());
                 intent.putExtra("detail_content", arP.get(position).skiGolf.getTOUR_INFM());
                 intent.putExtra("phone", arP.get(position).skiGolf.getCONTACT());
                 intent.putExtra("homepage", arP.get(position).skiGolf.getHOMPAGE());
+                intent.putExtra("attractions", arP.get(position).skiGolf.getSURROUNDINGS_ATTRACTION());
+
 
                 String img = arP.get(position).skiGolf.getIMG();
                 String[] imgs = img.split("http://");
@@ -300,6 +317,8 @@ class MyPlaceAdapter extends BaseAdapter {
         return convertView;
 
     }
+
+
 
 
 }

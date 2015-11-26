@@ -41,14 +41,17 @@
         <activity
             android:name=".ListPageActivity"
             android:label="@string/title_activity_list_page"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TipListPageActivity"
             android:label="@string/title_activity_tip_list_page"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
