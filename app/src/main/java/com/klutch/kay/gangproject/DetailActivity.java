@@ -1,5 +1,6 @@
 package com.klutch.kay.gangproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -19,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,9 +30,16 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
     //Grace: 갤러리 뷰
     ImageView lastClicked = null;
     //이미지 크기
-    int width = 300;
-    int height = 200;
-    int padding = 30;
+    int width = 400;
+    int height = 300;
+    int padding = 10;
+
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 150;
+
+    int size = (int) Math.ceil(Math.sqrt(MAX_WIDTH * MAX_HEIGHT));
+
+
 
     private GoogleMap mMap;
 
@@ -53,19 +62,28 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         TextView textView = (TextView)findViewById(R.id.detail_txtView);
         textView.setText(intent.getStringExtra("detail_content"));
 
+
         //Grace: 갤러리
         LinearLayout l;
         l = (LinearLayout) findViewById(R.id.detail_imgGallery);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
-        int[] images = new int[] {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
-        for (int i=0; i<6; i++){
+        String[] images = intent.getStringArrayExtra("imgs");
+
+        for (int i=1; i<images.length; i++){
+            System.out.println("URL ADDRESS" + images[i]);
             ImageView iv = new ImageView(this);
+            //사진 로딩
+            Picasso.with(getApplicationContext()).load("http://" + images[i]).transform(new BitmapTransform(MAX_WIDTH, MAX_HEIGHT)).resize(size, size).centerInside().into(iv);
+
             iv.setLayoutParams(layoutParams);
-            iv.setImageResource(images[i]);
             iv.setPadding(padding, padding, padding, padding);
             iv.setOnClickListener(this);
             l.addView(iv);
         }
+
+//        Picasso.with(this).load("").into(v);
+
+
     }
 
     /**
@@ -116,6 +134,8 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
     //Grace: 갤러리 이미지 클릭
 
     public void onClick(View v){
+
+
         if (v instanceof ImageView){
             if(lastClicked != null){
                 lastClicked.setPadding(padding, padding, padding, padding);

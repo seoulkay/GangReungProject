@@ -57,13 +57,13 @@
         android:layout_toLeftOf="@+id/img"
         android:layout_below="@+id/txt"/> -->
 
-    <Button
+    <!--<Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter"
         android:layout_alignParentRight="true"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:onClick="DetailPage"/>
+        android:onClick="DetailPage"/>-->
 
 </RelativeLayout>

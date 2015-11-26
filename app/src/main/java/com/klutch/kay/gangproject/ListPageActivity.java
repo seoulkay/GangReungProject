@@ -2,15 +2,16 @@ package com.klutch.kay.gangproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,43 +31,41 @@ import java.util.ArrayList;
 public class ListPageActivity extends AppCompatActivity {
 
     ArrayList<MyPlace> arPlace;
-//
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_page);
 
-        //Grace: 액티비티에 지역별로 인자 잘 넘어오나 확인하기위해 임시로 둔 텍스트 뷰
-        TextView locationName = (TextView) findViewById(R.id.txt_location);
 
         String skiGolfStr = "";
 
-            try {
-                InputStream is = getAssets().open("skiGolf.json");
-                skiGolfStr = readFile(is);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+        try {
+            InputStream is = getAssets().open("skiENG.json");
+            skiGolfStr = readFile(is);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
 
-            Gson skiGolf = new Gson();
-            skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
-
-
-
-            arPlace = new ArrayList<MyPlace>();
-            MyPlace myplace;
-
-
-//            for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
-//                myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT());
-//                arPlace.add(myplace);
-//            }
+        Gson skiGolf = new Gson();
+        skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
 
 
 
+        arPlace = new ArrayList<MyPlace>();
+        MyPlace myplace;
 
 
+
+        for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
+            myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
+            arPlace.add(myplace);
+
+        }
+
+        //Grace: 액티비티에 지역별로 인자 잘 넘어오나 확인하기위해 임시로 둔 텍스트 뷰
+        TextView locationName = (TextView) findViewById(R.id.txt_location);
 
         /*AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
@@ -81,22 +80,22 @@ public class ListPageActivity extends AppCompatActivity {
         String location = intent.getStringExtra("selectedItemId");
         switch (location) {
             case "GANG NEUNG":
-                locationName.setText("속초시");
-                for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
-                    if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("속초시")) {
+                locationName.setText("강릉시");
+                /*for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
+                    if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("강릉시")) {
                         myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
                         arPlace.add(myplace);
                     }
-                }
+                }*/
                 break;
             case "PYEONG CHANG":
                 locationName.setText("평창군");
-                for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
+                /*for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
                     if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("평창군")) {
                         myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
                         arPlace.add(myplace);
                     }
-                }
+                }*/
                 break;
             case "GO SEONG":
                 locationName.setText("고성군");
@@ -270,33 +269,44 @@ class MyPlaceAdapter extends BaseAdapter {
         return position;
     }
 
+
     //각 항목의 뷰 생성 후 반환
     public View getView(final int position, View convertView, ViewGroup parent){
         if (convertView == null){
             convertView = inflater.inflate(layout, parent, false);
+            ImageView img = (ImageView) convertView.findViewById(R.id.img);
+            img.setImageResource(arP.get(position).Icon);
         }
-        ImageView img = (ImageView) convertView.findViewById(R.id.img);
-        img.setImageResource(arP.get(position).Icon);
+
 
 
         TextView txt = (TextView) convertView.findViewById(R.id.txt);
         txt.setText(arP.get(position).Name);
 
-
-        Button btn = (Button) convertView.findViewById(R.id.btn);
-        btn.setOnClickListener(new Button.OnClickListener(){
-            public void onClick(View v){
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 String str = arP.get(position).Name + "버튼";
                 Toast.makeText(con, str, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(con, DetailActivity.class);
                 intent.putExtra("Place", arP.get(position).skiGolf.getSUBJECT());
                 intent.putExtra("NEW address", arP.get(position).skiGolf.getNEW_ADDR());
                 intent.putExtra("detail_content", arP.get(position).skiGolf.getTOUR_INFM());
-                System.out.println("%%%$%%$%$%$%$%" + arP.get(position).skiGolf.getTOUR_INFM());
+                intent.putExtra("phone", arP.get(position).skiGolf.getCONTACT());
+                intent.putExtra("homepage", arP.get(position).skiGolf.getHOMPAGE());
+
+                String img = arP.get(position).skiGolf.getIMG();
+                String[] imgs = img.split("http://");
+
+                intent.putExtra("imgs", imgs);
+
                 con.startActivity(intent);
             }
         });
+
+
         return convertView;
+
     }
 
 
