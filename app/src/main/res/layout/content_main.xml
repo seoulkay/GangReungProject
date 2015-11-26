@@ -14,11 +14,16 @@
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:text="Where to"
+        android:textSize="15dp"
+        android:textColor="#f99a53"
+        android:background="#2f444444"
         android:padding="5dp"/>
 
     <com.rajasharan.widget.SearchableSpinner
         android:id="@+id/main_spinner"
+        android:background="#2f444444"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -27,4 +32,5 @@
         android:padding="5dp"
         app:list="@array/location">
     </com.rajasharan.widget.SearchableSpinner>
+
 </RelativeLayout>

@@ -63,11 +63,6 @@ public class ListPageActivity extends AppCompatActivity {
 //                arPlace.add(myplace);
 //            }
 
-
-
-
-
-
         /*AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -84,7 +79,7 @@ public class ListPageActivity extends AppCompatActivity {
                 locationName.setText("속초시");
                 for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
                     if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("속초시")) {
-                        myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
+                        myplace = new MyPlace(R.mipmap.ic_snow, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
                         arPlace.add(myplace);
                     }
                 }
@@ -93,7 +88,7 @@ public class ListPageActivity extends AppCompatActivity {
                 locationName.setText("평창군");
                 for(int i = 0; skiGolfVo.getDATA().size() > i; i++) {
                     if(skiGolfVo.getDATA().get(i).getGOV_NM().equals("평창군")) {
-                        myplace = new MyPlace(R.mipmap.ic_launcher, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
+                        myplace = new MyPlace(R.mipmap.ic_snow, skiGolfVo.getDATA().get(i).getSUBJECT(), skiGolfVo.getDATA().get(i));
                         arPlace.add(myplace);
                     }
                 }
@@ -112,6 +107,9 @@ public class ListPageActivity extends AppCompatActivity {
                 break;
             case "YANG GU":
                 locationName.setText("양구군");
+                break;
+            case "YANG YANG":
+                locationName.setText("양양군");
                 break;
             case "YEONG WOL":
                 locationName.setText("영월군");
@@ -140,8 +138,8 @@ public class ListPageActivity extends AppCompatActivity {
             case "HWA CHEON":
                 locationName.setText("화천군");
                 break;
-            case "HOENG SEONG":
-                locationName.setText("횡성군");
+            case "HONG SEONG":
+                locationName.setText("홍성군");
                 break;
         }
 
