@@ -44,6 +44,7 @@ public class SearchableSpinner extends ViewGroup implements TextWatcher, View.On
     private void init(Context context, AttributeSet attrs) {
         mText = new TextView(context);
         mText.setTextColor(Color.BLACK);
+        mText.setTextSize(15);
         mText.setLayoutParams(generateDefaultLayoutParams());
 
         mDropdownArrow = new TextView(context);
