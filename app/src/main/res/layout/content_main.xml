@@ -11,9 +11,10 @@
 
     <TextView
         android:id="@+id/spinner_label"
+        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Location"
+        android:text="Where to"
         android:padding="5dp"/>
 
     <com.rajasharan.widget.SearchableSpinner
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/spinner_label"
         android:padding="5dp"
         app:list="@array/location">
