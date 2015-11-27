@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="location">
-        <item>Hello Gangwon!</item>
-        <item>IN JE</item>
         <item>GO SEONG</item>
+        <item>WON JU</item>
+        <item>IN JE</item>
         <item>DONG HAE</item>
         <item>SAM CHEOK</item>
         <item>SOK CHO</item>
@@ -11,7 +11,6 @@
         <item>YANG YANG</item>
         <item>YEONG WOL</item>
         <item>PYEONG CHANG</item>
-        <item>WON JU</item>
         <item>GANG NEUNG</item>
         <item>JEONG SEON</item>
         <item>CHEOR WON</item>
