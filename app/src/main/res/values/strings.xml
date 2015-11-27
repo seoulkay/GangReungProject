@@ -10,4 +10,7 @@
     <string name="to">To</string>
     <string name="title_activity_floating">floatingActivity</string>
     <string name="title_activity_tip_list_page">TipListPageActivity</string>
+
+    <string name="action_info">Photo info</string>
+    <string name="action_photo">View photo</string>
 </resources>
