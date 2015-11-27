@@ -5,8 +5,9 @@ package com.klutch.kay.gangproject;
  */
 public class NatureItem {
     private String mName;
-    private String mDes;
+    private String mEng;
     private String mKor;
+    private String mSound;
     private int mThumbnail;
 
     public String getName() {
@@ -17,12 +18,12 @@ public class NatureItem {
         this.mName = name;
     }
 
-    public String getDes() {
-        return mDes;
+    public String getEng() {
+        return mEng;
     }
 
-    public void setDes(String des) {
-        this.mDes = des;
+    public void setEng(String eng) {
+        this.mEng = eng;
     }
 
     public String getKor() {
@@ -32,6 +33,10 @@ public class NatureItem {
     public void setKor(String kor) {
         this.mKor = kor;
     }
+
+    public String getSound(){ return mSound;}
+
+    public void setSound(String sound) { this.mSound = sound; }
 
     public int getThumbnail() {
         return mThumbnail;

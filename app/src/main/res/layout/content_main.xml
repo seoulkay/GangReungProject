@@ -9,28 +9,30 @@
     tools:context="com.example.yskg.hellogangwon.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/spinner_label"
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="Start your"
+        android:text="TOUCH "
         android:textSize="25dp"
         android:textColor="#444444"
         android:padding="5dp"
-        />
+        />-->
 
     <com.rajasharan.widget.SearchableSpinner
         android:id="@+id/main_spinner"
-        android:background="#2f444444"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="#00444444"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/spinner_label"
         android:padding="5dp"
-        app:list="@array/location">
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:list="@array/location"
+        >
     </com.rajasharan.widget.SearchableSpinner>
 
 </RelativeLayout>

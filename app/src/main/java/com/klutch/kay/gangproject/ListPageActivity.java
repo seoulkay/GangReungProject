@@ -39,9 +39,9 @@ public class ListPageActivity extends AppCompatActivity {
         try {
             InputStream is = getAssets().open("skiENG.json");
             skiGolfStr = readFile(is);
-            InputStream is2 = getAssets().open("museum.json");
+            InputStream is2 = getAssets().open("museumENG.json");
             museumStr = readFile(is2);
-            InputStream is3 = getAssets().open("temple.json");
+            InputStream is3 = getAssets().open("templeENG.json");
             templeStr = readFile(is3);
         }catch(Exception e){
             e.printStackTrace();
@@ -57,11 +57,11 @@ public class ListPageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String location = intent.getStringExtra("selectedItemId");
         switch (location) {
-            case "Journey":
-                //locationName.setText("Journey!");
-                arPlace = getSkiGOlfVo("Journey!", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("Journey!", museumVo));
-                arPlace.addAll(getSkiGOlfVo("Journey!", templeVo));
+            case "HERE!":
+                //locationName.setText("Hello Gangwon!");
+                arPlace = getSkiGOlfVo("Hello Gangwon!", skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("Hello Gangwon!", museumVo));
+                arPlace.addAll(getSkiGOlfVo("Hello Gangwon!", templeVo));
                 break;
             case "GANG NEUNG":
                 //locationName.setText("강릉시");
@@ -255,13 +255,13 @@ public class ListPageActivity extends AppCompatActivity {
             if(vo.getGOV_NM().equals(city)) {
                 //장르에 따라 바뀌는 아이콘 필요
                 if(vo.getCTGRY_NM().equals("05.박물관/기념관/미술관")) {
-                    myplace = new MyPlace(R.mipmap.ic_hotel, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                    myplace = new MyPlace(R.mipmap.ic_museum, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
                 }else if(vo.getCTGRY_NM().equals("03.사찰/불상/탑/동종")){
-                    myplace = new MyPlace(R.mipmap.ic_golf, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                    myplace = new MyPlace(R.mipmap.ic_buddhism, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
                 }else if(vo.getCTGRY_NM().equals("01.스키/골프/리조트")){
                     myplace = new MyPlace(R.mipmap.ic_snow, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
                 }else{
-                    myplace = new MyPlace(R.mipmap.ic_golf, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
+                    myplace = new MyPlace(R.mipmap.ic_beach, skiGolfVo.getDATA().get(i).getSUBJECT(), vo);
                 }
                 result.add(myplace);
             }

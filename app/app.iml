@@ -135,9 +135,6 @@
     <orderEntry type="library" exported="" name="play-services-appstate-8.3.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-location-8.3.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-games-8.3.0" level="project" />
-    <orderEntry type="library" exported="" name="cardview-v7-23.0.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-gcm-8.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-safetynet-8.3.0" level="project" />
     <orderEntry type="library" exported="" name="mediarouter-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-plus-8.3.0" level="project" />
@@ -147,6 +144,7 @@
     <orderEntry type="library" exported="" name="play-services-wearable-8.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-8.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-8.3.0" level="project" />
+    <orderEntry type="library" exported="" name="cardview-v7-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-panorama-8.3.0" level="project" />

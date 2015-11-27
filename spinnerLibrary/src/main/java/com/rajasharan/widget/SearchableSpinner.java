@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -42,15 +43,19 @@ public class SearchableSpinner extends ViewGroup implements TextWatcher, View.On
     }
 
     private void init(Context context, AttributeSet attrs) {
+        LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
         mText = new TextView(context);
-        mText.setTextColor(Color.parseColor("#f99a53"));
-        mText.setBackgroundColor(Color.WHITE);
-        mText.setTextSize(30);
-        mText.setLayoutParams(generateDefaultLayoutParams());
+        mText.setTextColor(Color.parseColor("#00000000"));
+        mText.setLayoutParams(layoutParams);
+        mText.setTextSize(100);
+        mText.setBackgroundColor(Color.parseColor("#00000000"));
+        mText.setAlpha(0f);
+        //mText.setLayoutParams(generateDefaultLayoutParams());
 
         mDropdownArrow = new TextView(context);
         //mDropdownArrow.setText("\u25BC");
-        mDropdownArrow.setBackgroundColor(Color.WHITE);
+        //mDropdownArrow.setBackgroundColor(Color.TRANSPARENT);
         mDropdownArrow.setLayoutParams(generateDefaultLayoutParams());
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SearchableSpinner);
