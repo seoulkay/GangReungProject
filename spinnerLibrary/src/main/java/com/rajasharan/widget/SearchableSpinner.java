@@ -51,11 +51,11 @@ public class SearchableSpinner extends ViewGroup implements TextWatcher, View.On
         mText.setTextSize(100);
         mText.setBackgroundColor(Color.parseColor("#00000000"));
         mText.setAlpha(0f);
-        //mText.setLayoutParams(generateDefaultLayoutParams());
+        mText.setLayoutParams(generateDefaultLayoutParams());
 
         mDropdownArrow = new TextView(context);
-        //mDropdownArrow.setText("\u25BC");
-        //mDropdownArrow.setBackgroundColor(Color.TRANSPARENT);
+        mDropdownArrow.setText("\u25BC");
+        mDropdownArrow.setBackgroundColor(Color.TRANSPARENT);
         mDropdownArrow.setLayoutParams(generateDefaultLayoutParams());
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SearchableSpinner);

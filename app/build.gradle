@@ -11,10 +11,30 @@ android {
         versionCode 1
         versionName "1.1"
     }
-    buildTypes {
+    signingConfigs {
+        debug {
+            storeFile file("/Users/apple/Desktop/GN.jks")
+            storePassword "123456"
+            keyAlias "Hello Gangwon"
+            keyPassword "123456"
+        }
         release {
+            storeFile file("/Users/apple/Desktop/GNR.jks")
+            storePassword "123456"
+            keyAlias "Hello Gangwon"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
         }
     }
 

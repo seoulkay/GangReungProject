@@ -12,15 +12,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class ListPageActivity extends AppCompatActivity {
@@ -33,143 +24,123 @@ public class ListPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_page);
 
 
-        String skiGolfStr = "";
-        String museumStr = "";
-        String templeStr = "";
-        try {
-            InputStream is = getAssets().open("skiENG.json");
-            skiGolfStr = readFile(is);
-            InputStream is2 = getAssets().open("museumENG.json");
-            museumStr = readFile(is2);
-            InputStream is3 = getAssets().open("templeENG.json");
-            templeStr = readFile(is3);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-        Gson skiGolf = new Gson();
-        skiGolfList skiGolfVo = skiGolf.fromJson(skiGolfStr, skiGolfList.class);
-        Gson museum = new Gson();
-        skiGolfList museumVo = museum.fromJson(museumStr, skiGolfList.class);
-        Gson temple = new Gson();
-        skiGolfList templeVo = temple.fromJson(templeStr, skiGolfList.class);
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("selectedItemId");
         switch (location) {
             case "HERE!":
                 //locationName.setText("Hello Gangwon!");
-                arPlace = getSkiGOlfVo("Hello Gangwon!", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("Hello Gangwon!", museumVo));
-                arPlace.addAll(getSkiGOlfVo("Hello Gangwon!", templeVo));
+                arPlace = getSkiGOlfVo("Hello Gangwon!", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("Hello Gangwon!", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("Hello Gangwon!", MainActivity.templeVo));
                 break;
             case "GANG NEUNG":
                 //locationName.setText("강릉시");
-                arPlace = getSkiGOlfVo("강릉시", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("강릉시", museumVo));
-                arPlace.addAll(getSkiGOlfVo("강릉시", templeVo));
+                arPlace = getSkiGOlfVo("강릉시", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("강릉시", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("강릉시", MainActivity.templeVo));
                 break;
             case "PYEONG CHANG":
                 //locationName.setText("평창군");
-                arPlace = getSkiGOlfVo("평창군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("평창군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("평창군", templeVo));
+                arPlace = getSkiGOlfVo("평창군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("평창군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("평창군", MainActivity.templeVo));
                 break;
             case "GO SEONG":
                 //locationName.setText("고성군");
-                arPlace = getSkiGOlfVo("고성군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("고성군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("고성군", templeVo));
+                arPlace = getSkiGOlfVo("고성군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("고성군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("고성군", MainActivity.templeVo));
                 break;
             case "DONG HAE":
                 //locationName.setText("동해시");
-                arPlace = getSkiGOlfVo("동해시", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("동해시", museumVo));
-                arPlace.addAll(getSkiGOlfVo("동해시", templeVo));
+                arPlace = getSkiGOlfVo("동해시", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("동해시", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("동해시", MainActivity.templeVo));
                 break;
             case "SAM CHEOK":
                 //locationName.setText("삼척시");
-                arPlace = getSkiGOlfVo("삼척시", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("삼척시", museumVo));
-                arPlace.addAll(getSkiGOlfVo("삼척시", templeVo));
+                arPlace = getSkiGOlfVo("삼척시", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("삼척시", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("삼척시", MainActivity.templeVo));
                 break;
             case "SOK CHO":
                 //locationName.setText("속초시");
-                arPlace = getSkiGOlfVo("속초시", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("속초시", museumVo));
-                arPlace.addAll(getSkiGOlfVo("속초시", templeVo));
+                arPlace = getSkiGOlfVo("속초시", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("속초시", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("속초시", MainActivity.templeVo));
                 break;
             case "YANG GU":
                 //locationName.setText("양구군");
-                arPlace = getSkiGOlfVo("양구군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("양구군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("양구군", templeVo));
+                arPlace = getSkiGOlfVo("양구군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("양구군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("양구군", MainActivity.templeVo));
                 break;
             case "YANG YANG":
                 //locationName.setText("양양군");
-                arPlace = getSkiGOlfVo("양양군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("양양군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("양양군", templeVo));
+                arPlace = getSkiGOlfVo("양양군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("양양군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("양양군", MainActivity.templeVo));
                 break;
             case "YEONG WOL":
                 //locationName.setText("영월군");
-                arPlace = getSkiGOlfVo("영월군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("영월군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("영월군", templeVo));
+                arPlace = getSkiGOlfVo("영월군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("영월군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("영월군", MainActivity.templeVo));
                 break;
             case "WON JU":
                 //locationName.setText("원주시");
-                arPlace = getSkiGOlfVo("원주시", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("원주시", museumVo));
-                arPlace.addAll(getSkiGOlfVo("원주시", templeVo));
+                arPlace = getSkiGOlfVo("원주시", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("원주시", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("원주시", MainActivity.templeVo));
                 break;
             case "IN JE":
                 //locationName.setText("인제군");
-                arPlace = getSkiGOlfVo("인제군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("인제군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("인제군", templeVo));
+                arPlace = getSkiGOlfVo("인제군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("인제군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("인제군", MainActivity.templeVo));
                 break;
             case "JEONG SEON":
                 //locationName.setText("정선군");
-                arPlace = getSkiGOlfVo("정선군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("정선군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("정선군", templeVo));
+                arPlace = getSkiGOlfVo("정선군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("정선군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("정선군", MainActivity.templeVo));
                 break;
             case "CHEOR WON":
                 //locationName.setText("철원군");
-                arPlace = getSkiGOlfVo("철원군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("철원군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("철원군", templeVo));
+                arPlace = getSkiGOlfVo("철원군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("철원군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("철원군", MainActivity.templeVo));
                 break;
             case "CHUN CHEON":
                 //locationName.setText("춘천시");
-                arPlace = getSkiGOlfVo("춘천시", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("춘천시", museumVo));
-                arPlace.addAll(getSkiGOlfVo("춘천시", templeVo));
+                arPlace = getSkiGOlfVo("춘천시", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("춘천시", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("춘천시", MainActivity.templeVo));
                 break;
             case "TAE BAEK":
                 //locationName.setText("태백시");
-                arPlace = getSkiGOlfVo("태백시", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("태백시", museumVo));
-                arPlace.addAll(getSkiGOlfVo("태백시", templeVo));
+                arPlace = getSkiGOlfVo("태백시", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("태백시", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("태백시", MainActivity.templeVo));
                 break;
             case "HONG CHEON":
                 //locationName.setText("홍천군");
-                arPlace = getSkiGOlfVo("홍천군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("홍천군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("홍천군", templeVo));
+                arPlace = getSkiGOlfVo("홍천군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("홍천군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("홍천군", MainActivity.templeVo));
                 break;
             case "HWA CHEON":
                 //locationName.setText("화천군");
-                arPlace = getSkiGOlfVo("화천군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("화천군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("화천군", templeVo));
+                arPlace = getSkiGOlfVo("화천군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("화천군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("화천군", MainActivity.templeVo));
                 break;
             case "HOENG SEONG":
                 //locationName.setText("횡성군");
-                arPlace = getSkiGOlfVo("횡성군", skiGolfVo);
-                arPlace.addAll(getSkiGOlfVo("횡성군", museumVo));
-                arPlace.addAll(getSkiGOlfVo("횡성군", templeVo));
+                arPlace = getSkiGOlfVo("횡성군", MainActivity.skiGolfVo);
+                arPlace.addAll(getSkiGOlfVo("횡성군", MainActivity.museumVo));
+                arPlace.addAll(getSkiGOlfVo("횡성군", MainActivity.templeVo));
                 break;
         }
 
@@ -180,71 +151,7 @@ public class ListPageActivity extends AppCompatActivity {
         list.setAdapter(adapter);
     }
 
-    public String readFile(InputStream name){
-        // 버퍼 생성
-        BufferedReader br = null;
-
-        // Input 스트림 생성
-        InputStreamReader isr = null;
-
-        // File Input 스트림 생성
-        //FileInputStream fis = null;
-        InputStream fis = name;
-
-        // File 경로
-        //File file = new File("temp/target.txt");
-
-        // 버퍼로 읽어들일 임시 변수
-        String temp = "";
-
-        // 최종 내용 출력을 위한 변수
-        String content = "";
-        try {
-
-            // 파일을 읽어들여 File Input 스트림 객체 생성
-            //fis = new FileInputStream(file);
-
-            // File Input 스트림 객체를 이용해 Input 스트림 객체를 생서하는데 인코딩을 UTF-8로 지정
-            isr = new InputStreamReader(fis, "UTF-8");
-
-            // Input 스트림 객체를 이용하여 버퍼를 생성
-            br = new BufferedReader(isr);
-
-            // 버퍼를 한줄한줄 읽어들여 내용 추출
-            while( (temp = br.readLine()) != null) {
-                content += temp + "\n";
-            }
-            //System.out.println("================== 파일 내용 출력 ==================");
-            //System.out.println(content);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        } finally {
-
-            try {
-                fis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                isr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return content;
-    }
+    
 
     public ArrayList<MyPlace> getSkiGOlfVo(String city, skiGolfList skiGolfVo){
         ArrayList<MyPlace> result = new ArrayList<>();

@@ -37,7 +37,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
         nature = new NatureItem();
         nature.setName("Taxi");
-        nature.setEng("LSir, I would like to go to this place.");
+        nature.setEng("Sir, I would like to go to this place.");
         nature.setKor("기사님. 여기로 가주세요.");
         nature.setSound("Gi sa nim, yeo gi jom ga ju se yo.");
         nature.setThumbnail(R.drawable.img_taxi);
