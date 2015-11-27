@@ -9,7 +9,7 @@
     tools:context="com.example.yskg.hellogangwon.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/spinner_label"
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
         android:textSize="15dp"
         android:textColor="#f99a53"
         android:background="#2f444444"
-        android:padding="5dp"/>
+        android:padding="5dp"/> -->
 
     <com.rajasharan.widget.SearchableSpinner
         android:id="@+id/main_spinner"
@@ -27,10 +27,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/spinner_label"
         android:padding="5dp"
-        app:list="@array/location">
+        app:list="@array/location"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp">
     </com.rajasharan.widget.SearchableSpinner>
 
 </RelativeLayout>

@@ -13,4 +13,5 @@
 
     <string name="action_info">Photo info</string>
     <string name="action_photo">View photo</string>
+    <string name="title_activity_gallery">GalleryActivity</string>
 </resources>

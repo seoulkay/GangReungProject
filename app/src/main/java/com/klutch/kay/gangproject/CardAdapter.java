@@ -1,11 +1,13 @@
 package com.klutch.kay.gangproject;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         mItems = new ArrayList<NatureItem>();
         NatureItem nature = new NatureItem();
         nature.setName("Purchase Tickets");
-        nature.setDes("Excuse me");
+        nature.setDes("How much is the admission fee/ticket?");
         nature.setKor("실례합니다");
         nature.setThumbnail(R.drawable.purchase_ticket);
         mItems.add(nature);
@@ -64,12 +66,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        NatureItem nature = mItems.get(i);
+    public void onBindViewHolder(final ViewHolder viewHolder, final int i) {
+        final NatureItem nature = mItems.get(i);
         viewHolder.tvNature.setText(nature.getName());
         viewHolder.tvDesNature.setText(nature.getDes());
         viewHolder.kor_expression.setText(nature.getKor());
         viewHolder.imgThumbnail.setImageResource(nature.getThumbnail());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                viewHolder.tvDesNature.setText("실례합니다.");
+
+            }
+        });
+
     }
 
     @Override
@@ -77,7 +87,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         return mItems.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imgThumbnail;
         public TextView tvNature;

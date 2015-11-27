@@ -1,6 +1,8 @@
 package com.klutch.kay.gangproject;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
@@ -22,6 +24,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -60,6 +63,8 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         l = (LinearLayout) findViewById(R.id.detail_imgGallery);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
         int[] images = new int[] {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+
+
         for (int i=0; i<6; i++){
             ImageView iv = new ImageView(this);
             iv.setLayoutParams(layoutParams);
@@ -81,6 +86,21 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         });
 
     }
+
+    //Grace: 갤러리 이미지 클릭
+    public void onClick(View v){
+    }
+        /*if (v instanceof ImageView){
+            if(lastClicked != null){
+                lastClicked.setPadding(padding, padding, padding, padding);
+                lastClicked.invalidate();
+            }
+            v.setPadding(0,0,0,0);
+            v.invalidate();
+            lastClicked = (ImageView) v;
+        }
+    }*/
+
 
     /**
      * Manipulates the map once available.
@@ -126,19 +146,4 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         //mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
     }
-
-    //Grace: 갤러리 이미지 클릭
-
-    public void onClick(View v){
-        if (v instanceof ImageView){
-            if(lastClicked != null){
-                lastClicked.setPadding(padding, padding, padding, padding);
-                lastClicked.invalidate();
-            }
-            v.setPadding(0,0,0,0);
-            v.invalidate();
-            lastClicked = (ImageView) v;
-        }
-    }
-
 }
