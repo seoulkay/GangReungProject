@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="location">
+        <item>GO SEONG</item>
+        <item>WON JU</item>
+        <item>IN JE</item>
+        <item>DONG HAE</item>
+        <item>SAM CHEOK</item>
+        <item>SOK CHO</item>
+        <item>YANG GU</item>
+        <item>YANG YANG</item>
+        <item>YEONG WOL</item>
+        <item>PYEONG CHANG</item>
+        <item>GANG NEUNG</item>
+        <item>JEONG SEON</item>
+        <item>CHEOR WON</item>
+        <item>CHUN CHEON</item>
+        <item>TAE BAEK</item>
+        <item>HONG CHEON</item>
+        <item>HWA CHEON</item>
+        <item>HOENG SEONG</item>
+    </string-array>
+</resources>

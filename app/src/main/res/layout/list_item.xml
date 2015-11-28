@@ -15,23 +15,29 @@
         android:src="@mipmap/ic_launcher"
         android:layout_alignParentLeft="true"/>
 
-    <TextView
-        android:id="@+id/txt"
+    <LinearLayout
+        android:id="@+id/list_linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="경포대"
-        android:textSize="20dp"
-        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/img"
-        android:layout_toEndOf="@+id/img" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter"
-        android:layout_alignParentRight="true"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:onClick="DetailPage"/>
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_alignParentTop="true"/>
+
+        <RatingBar
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:isIndicator="true"
+            style="?android:attr/ratingBarStyleSmall"/>
+    </LinearLayout>
+
 
 </RelativeLayout>
