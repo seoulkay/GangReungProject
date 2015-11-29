@@ -1,16 +1,12 @@
 package com.klutch.kay.gangproject;
 
-import android.app.Application;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +32,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Taxi");
-        nature.setEng("Sir, I would like to go to this place.");
-        nature.setKor("기사님. 여기로 가주세요.");
-        nature.setSound("Gi sa nim, yeo gi jom ga ju se yo.");
-        nature.setThumbnail(R.drawable.img_taxi);
+        nature.setName("Purchase Ticket");
+        nature.setEng("Where can I buy the admission ticket?");
+        nature.setKor("티켓 어디서 사요?");
+        nature.setSound("Ticket Eo di seo sa yo?");
+        nature.setThumbnail(R.drawable.img_ticket);
         mItems.add(nature);
 
         nature = new NatureItem();
@@ -48,6 +44,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         nature.setEng("How much is this?");
         nature.setKor("얼마예요?");
         nature.setSound("Eol ma ye yo?");
+        nature.setThumbnail(R.drawable.img_purchase);
+        mItems.add(nature);
+
+        nature = new NatureItem();
+        nature.setName("Buy Stuff");
+        nature.setEng("This is too expensive. Please give me some discount.");
+        nature.setKor("너무 비싸요. 좀 깎아주세요.");
+        nature.setSound("Neo mu bi ssa yo. jom kka kka ju se yo.");
         nature.setThumbnail(R.drawable.img_purchase);
         mItems.add(nature);
 
@@ -60,20 +64,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Purchase Ticket");
-        nature.setEng("Where can I buy the admission ticket?");
-        nature.setKor("티켓 어디서 사요?");
-        nature.setSound("Ticket Eo di seo sa yo?");
-        nature.setThumbnail(R.drawable.img_ticket);
+        nature.setName("Taxi");
+        nature.setEng("Sir, I would like to go to this place.");
+        nature.setKor("기사님. 여기로 가주세요.");
+        nature.setSound("Gi sa nim, yeo gi jom ga ju se yo.");
+        nature.setThumbnail(R.drawable.img_taxi);
         mItems.add(nature);
 
-        nature = new NatureItem();
-        nature.setName("Buy Stuff");
-        nature.setEng("This is too expensive. Please give me some discount.");
-        nature.setKor("너무 비싸요. 좀 깎아주세요.");
-        nature.setSound("Neo mu bi ssa yo. jom kka kka ju se yo.");
-        nature.setThumbnail(R.drawable.img_purchase);
-        mItems.add(nature);
 
     }
 

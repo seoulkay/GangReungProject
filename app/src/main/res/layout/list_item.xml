@@ -36,6 +36,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:isIndicator="true"
+            android:progressTint="#88f99a53"
             style="?android:attr/ratingBarStyleSmall"/>
     </LinearLayout>
 
