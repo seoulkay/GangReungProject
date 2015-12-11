@@ -1,3 +1,3 @@
 # Hello Gangneung!!
 
-고기 사먹겠지...
+GDC iot project https://github.com/mcyirock/gdciot
